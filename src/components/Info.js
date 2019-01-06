@@ -14,7 +14,7 @@ export class Info extends Component {
     } else {
       info = this.props.xIsNext ? 'X is next' : 'O is next';
     }
-    if(this.props.isFull){
+    if(this.props.isFull && !this.props.winner){
       info = 'Draw';
     }
     return (

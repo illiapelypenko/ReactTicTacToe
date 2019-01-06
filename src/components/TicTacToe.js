@@ -4,6 +4,7 @@ import Board from './Board';
 import Info from './Info';
 import PlayButton from './PlayButton';
 
+const lodash = require('lodash');
 const Game = styled.div`
   display: flex;
   flex-direction: column;
@@ -11,7 +12,6 @@ const Game = styled.div`
   align-items: center;
   padding: 10px;
   height: 100vh;
-  /* background-color: rgb(38, 40, 53); */
 `;
 
 export class TicTacToe extends Component {
@@ -37,6 +37,7 @@ export class TicTacToe extends Component {
       winner: '',
       isFull: false
     }
+    this.baseState = lodash.cloneDeep(this.state);
   }
   theWinner(cells) {
     let lines = [
@@ -55,7 +56,7 @@ export class TicTacToe extends Component {
         return cells[a].value;
       }
     }
-    return null;
+    return '';
   }
   handleCellClick(index) {
     let {cells, xIsNext, winner} = {...this.state};
@@ -68,41 +69,24 @@ export class TicTacToe extends Component {
       xIsNext = true;
     }
     let areFreeCells = false;
+    winner = this.theWinner(cells);
+    this.setState({cells, xIsNext, winner});
     cells.forEach(cell => {
       if(cell.value === ''){
         areFreeCells = true;
       }
     });
     areFreeCells ? this.setState({isFull: false}) : this.setState({isFull: true});
-    winner = this.theWinner(cells);
 
-    this.setState({cells, xIsNext, winner});
+    console.log(this.baseState);
   }
 
-  handlePlayButtonClick() {//to do
-    this.setState({
-      cells: [
-        {index: 0, value: '' },
-        {index: 1, value: '' },
-        {index: 2, value: '' },
-
-        {index: 3, value: '' },
-        {index: 4, value: '' },
-        {index: 5, value: '' },
-
-        {index: 6, value: '' },
-        {index: 7, value: '' },
-        {index: 8, value: '' }
-      ],
-      xIsNext: true,
-      winner: '',
-      isFull: false
-    
-    });
+  handlePlayButtonClick() {
+    const state = lodash.cloneDeep(this.baseState);
+    this.setState(state);
   }
 
   render() {
-
     return (
       <Game>
         <Info xIsNext={this.state.xIsNext} winner={this.state.winner} isFull={this.state.isFull}/>
