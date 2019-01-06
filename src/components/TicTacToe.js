@@ -34,7 +34,8 @@ export class TicTacToe extends Component {
         {index: 8, value: '' }
       ],
       xIsNext: true,
-      winner: ''
+      winner: '',
+      isFull: false
     }
   }
   theWinner(cells) {
@@ -66,7 +67,13 @@ export class TicTacToe extends Component {
       cells[index].value = 'O';
       xIsNext = true;
     }
-
+    let areFreeCells = false;
+    cells.forEach(cell => {
+      if(cell.value === ''){
+        areFreeCells = true;
+      }
+    });
+    areFreeCells ? this.setState({isFull: false}) : this.setState({isFull: true});
     winner = this.theWinner(cells);
 
     this.setState({cells, xIsNext, winner});
@@ -88,7 +95,8 @@ export class TicTacToe extends Component {
         {index: 8, value: '' }
       ],
       xIsNext: true,
-      winner: ''
+      winner: '',
+      isFull: false
     
     });
   }
@@ -97,7 +105,7 @@ export class TicTacToe extends Component {
 
     return (
       <Game>
-        <Info xIsNext={this.state.xIsNext} winner={this.state.winner}/>
+        <Info xIsNext={this.state.xIsNext} winner={this.state.winner} isFull={this.state.isFull}/>
         <Board cells={this.state.cells} onClick={this.handleCellClick}/>
         <PlayButton onClick={this.handlePlayButtonClick}/>
       </Game>
