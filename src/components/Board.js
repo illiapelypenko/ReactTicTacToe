@@ -3,12 +3,12 @@ import Cell from './Cell'
 import styled from 'styled-components';
 
 const Box = styled.div`
-  height: 322px;
-  width: 322px;
-  padding: 10px;
+  height: 300px;
+  width: 300px;
+  /* padding: 10px; */
   display: flex;
   flex-wrap: wrap;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   background-color: rgb(188, 196, 200);
 `;
 
@@ -26,4 +26,4 @@ export class Board extends Component {
   }
 }
 
-export default Board
+export default Board;

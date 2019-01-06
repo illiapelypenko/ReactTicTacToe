@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-const Button = styled.button`
-  outline: none;
-  color: rgb(247, 115, 15);
-  font-size: 1rem;
+const Button = styled.div`
+  width: 298px;
+  height: 48px;
+  margin: 1px 0px 1px 0px;
+
+  font-size: 2rem;
   font-weight: bold;
-  background-color: white;
-  border: 1px solid black;
+  text-align: center;
+
+  color: rgb(252, 193, 59);
+  background-color: rgb(44, 62, 81);
+
   cursor: pointer;
 `;
 
@@ -21,4 +26,4 @@ export class PlayButton extends Component {
   }
 }
 
-export default PlayButton
+export default PlayButton;

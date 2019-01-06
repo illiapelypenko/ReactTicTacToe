@@ -1,18 +1,22 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-const Button = styled.button`
-  font-size: 3rem;
-  border: 1px solid black;
-  height: 80px;
-  width: 80px;
-  margin: 10px;
-  outline: none;
-  background-color: rgb(44, 62, 81);
-  color: rgb(252, 193, 59);
+const Button = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  height: 100px;
+  width: 100px;
+  border: 1px solid white;
+
+  font-size: 4rem;
+  font-weight: bold;
+  
+  background-color: rgb(44, 62, 81);
+  color: rgb(252, 193, 59);
+
+  outline: none;
   cursor: pointer;
 `;
 
@@ -26,4 +30,4 @@ export class Cell extends Component {
   }
 }
 
-export default Cell
+export default Cell;

@@ -9,9 +9,6 @@ const Game = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  padding: 10px;
-  height: 100vh;
 `;
 
 export class TicTacToe extends Component {
@@ -61,13 +58,11 @@ export class TicTacToe extends Component {
   handleCellClick(index) {
     let {cells, xIsNext, winner} = {...this.state};
 
-    if(xIsNext && !winner && !cells[index].value){
-      cells[index].value = 'X';
-      xIsNext = false;
-    } else if(!xIsNext && !winner && !cells[index].value) {
-      cells[index].value = 'O';
-      xIsNext = true;
+    if(!winner && !cells[index].value){
+      xIsNext ? cells[index].value = 'X' : cells[index].value = 'O';
+      xIsNext ? xIsNext = false : xIsNext = true;
     }
+
     let areFreeCells = false;
     winner = this.theWinner(cells);
     this.setState({cells, xIsNext, winner});
@@ -97,4 +92,4 @@ export class TicTacToe extends Component {
   }
 }
 
-export default TicTacToe
+export default TicTacToe;
